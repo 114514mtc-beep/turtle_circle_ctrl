@@ -7,3 +7,4 @@ analysis/
 *.bag.active
 __pycache__/
 *.pyc
+!docs/results/*.bag

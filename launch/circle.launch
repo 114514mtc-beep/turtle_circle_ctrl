@@ -1,0 +1,16 @@
+<launch>
+  <arg name="period" default="8.0" />
+  <arg name="amplitude" default="1.0" />
+  <arg name="publish_rate" default="20.0" />
+  <arg name="record" default="false" />
+  <arg name="bag_prefix" default="$(env HOME)/catkin_ws/bags/circle" />
+
+  <node pkg="turtlesim" type="turtlesim_node" name="turtlesim" output="screen" />
+  <node pkg="turtle_circle_ctrl" type="circle_turtle" name="turtle_circle_node" output="screen" required="true">
+    <param name="period" value="$(arg period)" type="double" />
+    <param name="amplitude" value="$(arg amplitude)" type="double" />
+    <param name="publish_rate" value="$(arg publish_rate)" type="double" />
+  </node>
+  <node if="$(arg record)" pkg="rosbag" type="record" name="circle_recorder" output="screen"
+        args="-o $(arg bag_prefix) /turtle1/cmd_vel /turtle1/pose" />
+</launch>

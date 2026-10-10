@@ -1,0 +1,9 @@
+build/
+devel/
+install/
+bags/
+analysis/
+*.bag
+*.bag.active
+__pycache__/
+*.pyc
